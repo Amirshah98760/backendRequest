@@ -22,5 +22,17 @@ app.post('/items', (req, res) => {
     res.status(201).json(newItem);
 });
 
+//Put
+app.put('/items/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const item = items.find(i => i.id === id);
+
+    if (!item) {
+        return res.status(404).json({ message: 'Item not found' });
+    }
+
+    item.name = req.body.name;
+    res.json(item);
+});
 
 
