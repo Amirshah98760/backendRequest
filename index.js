@@ -10,6 +10,7 @@ let items = [];
 //get request 
 app.get('/items', (req, res)=> { 
     res.json(items);
+
 });
 
 // Post
@@ -45,4 +46,8 @@ app.delete('/items/:id', (req, res) => {
 
     items.splice(itemIndex, 1);
     res.status(204).send();
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
