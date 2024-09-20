@@ -35,4 +35,14 @@ app.put('/items/:id', (req, res) => {
     res.json(item);
 });
 
+app.delete('/items/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const itemIndex = items.findIndex(i => i.id === id);
 
+    if (itemIndex === -1) {
+        return res.status(404).json({ message: 'Item not found' });
+    }
+
+    items.splice(itemIndex, 1);
+    res.status(204).send();
+});
