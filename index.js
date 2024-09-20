@@ -1,9 +1,22 @@
 import express from 'express'
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.json());
+
+
+app.get('/', (req, res) => {
+    res.json({ message: "Home page is running!" });
+});
+
+app.get('/about', (req, res) => {
+    res.json({ message: "about  page is running!" });
+});
+
+
+
+
 
 let items = [];
 
